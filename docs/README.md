@@ -9,6 +9,7 @@
 | [ROLE-PROTOCOLS.md](ROLE-PROTOCOLS.md) | 📄 参考说明 | ✅ 已执行 | 角色职责、可修改范围与禁止事项 |
 | [CONVERGENCE-CHECKPOINT.md](CONVERGENCE-CHECKPOINT.md) | 📄 参考说明 | ✅ 已执行 | v0.1 设计冻结检查点 |
 | [ISSUE-MATRIX.md](ISSUE-MATRIX.md) | 📄 参考说明 | ✅ 已执行 | Issue 生命周期状态矩阵（根目录为镜像副本） |
+| [history.md](history.md) | 🧾 变更记录 | ✅ 已执行 | 增量变更记录（追加型历史文档，只追加不重写） |
 
 ## 图例
 

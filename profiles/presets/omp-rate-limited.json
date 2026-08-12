@@ -1,0 +1,7 @@
+{
+  "name":"omp-rate-limited",
+  "compose":["agent-no-parallel","agent-depth-2","context-isolation-high"],
+  "runtime":{"executor":"omp","max_parallel_agents":3,"parallel_subagents":false,"max_subagent_depth":2,"rate_limit_sensitive":true},
+  "preferences":{"minimize_agent_switching":"high","minimize_agent_calls":"high","reuse_agent_session":"high"},
+  "subagent_contract":{"require_owner":true,"require_objective":true,"require_scope":true,"require_inputs":true,"require_allowed_forbidden":true,"require_completion":true,"require_return_contract":true}
+}

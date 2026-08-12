@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Authority Envelope",
+  "type":"object",
+  "required":["task_scope","may","may_not"],
+  "properties":{
+    "task_scope":{"type":"array"},
+    "may":{"type":"array"},
+    "may_not":{"type":"array"},
+    "delegation_depth_remaining":{"type":"integer","minimum":0},
+    "scheduling_authority":{"type":"object"}
+  }
+}

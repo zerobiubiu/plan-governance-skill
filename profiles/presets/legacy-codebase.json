@@ -1,0 +1,1 @@
+{"name":"legacy-codebase","compose":[],"constraints":{"no_unrelated_cleanup":true},"preferences":{"minimal_change":"high","behavior_preservation":"high","explicit_unknowns":"high"}}

@@ -1,0 +1,1 @@
+{"name":"migration","compose":["rollback-required","verification-heavy"],"preferences":{"current_target_state_model":"high","cutover_validation":"high","compatibility_window":"high"}}

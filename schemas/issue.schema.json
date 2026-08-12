@@ -1,0 +1,16 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Plan Governance Issue",
+  "type":"object",
+  "required":["id","status","severity","root_cause"],
+  "properties":{
+    "id":{"type":"string"},
+    "status":{"enum":["OPEN","TRIAGED","REJECTED","INVESTIGATE","DEFERRED","CONFIRMED","FIX_PLANNED","FIXED_UNVERIFIED","REVERIFYING","VERIFIED","CLOSED","REOPENED","SUPERSEDED","ACCEPTED_RISK"]},
+    "severity":{"enum":["BLOCKER","MAJOR","MINOR","INFO"]},
+    "root_cause":{"type":"string"},
+    "findings":{"type":"array","items":{"type":"string"}},
+    "introduced_in":{},
+    "last_seen_in":{},
+    "revalidation":{"type":"array"}
+  }
+}

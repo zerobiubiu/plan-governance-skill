@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Context Capsule",
+  "type":"object",
+  "required":["id","type","target","objective","completion_contract","return_contract"],
+  "properties":{
+    "id":{"type":"string"},
+    "type":{"enum":["minimal","standard","investigation","implementation","blind-review","simulation","nested","delta"]},
+    "target":{"type":"object"},
+    "objective":{"type":"string"},
+    "constraints":{"type":"object"},
+    "verified_facts":{"type":"array"},
+    "upstream_inputs":{"type":"array"},
+    "known_unknowns":{"type":"array"},
+    "forbidden_assumptions":{"type":"array"},
+    "references":{"type":"array"},
+    "completion_contract":{},
+    "return_contract":{},
+    "freshness":{"type":"object"}
+  }
+}

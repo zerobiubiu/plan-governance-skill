@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Revision Directive",
+  "type":"object",
+  "required":["id","source_issues","mode","required_changes","revalidation"],
+  "properties":{
+    "id":{"type":"string"},
+    "source_issues":{"type":"array","items":{"type":"string"}},
+    "mode":{"enum":["PATCH","PARTIAL_REPLAN","FULL_REPLAN"]},
+    "required_changes":{"type":"array"},
+    "prohibited_changes":{"type":"array"},
+    "acceptance":{"type":"array"},
+    "revalidation":{"type":"array"}
+  }
+}

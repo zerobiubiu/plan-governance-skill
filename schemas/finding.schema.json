@@ -1,0 +1,17 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Plan Finding",
+  "type":"object",
+  "required":["id","rule","severity","confidence","observation"],
+  "properties":{
+    "id":{"type":"string"},
+    "rule":{"type":"string"},
+    "severity":{"enum":["BLOCKER","MAJOR","MINOR","INFO"]},
+    "confidence":{"enum":["low","medium","high","very_high"]},
+    "observation":{"type":"string"},
+    "affected":{"type":"object"},
+    "evidence":{"type":"array"},
+    "impact":{"type":"string"},
+    "required_resolution":{"type":"string"}
+  }
+}

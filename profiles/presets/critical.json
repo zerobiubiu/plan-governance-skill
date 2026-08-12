@@ -1,0 +1,1 @@
+{"name":"critical","governance_level":"G4","compose":["assumption-zero","rollback-required","verification-heavy"],"constraints":{"independent_validation":true,"simulation_required":true}}

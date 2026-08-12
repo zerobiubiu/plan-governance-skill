@@ -1,0 +1,20 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Plan Governance IR",
+  "type":"object",
+  "required":["schema_version","plan","requirements","tasks"],
+  "properties":{
+    "schema_version":{"type":"string"},
+    "plan":{"type":"object","required":["id","version","state"],"properties":{"id":{"type":"string"},"version":{"type":["integer","string"]},"state":{"type":"string"}}},
+    "runtime":{"type":"object"},
+    "policy":{"type":"object"},
+    "requirements":{"type":"array","items":{"type":"object","required":["id","statement"],"properties":{"id":{"type":"string"},"statement":{"type":"string"},"priority":{"type":"string"}}}},
+    "facts":{"type":"array"},
+    "assumptions":{"type":"array"},
+    "unknowns":{"type":"array"},
+    "tasks":{"type":"array","items":{"type":"object","required":["id","title"],"properties":{"id":{"type":"string"},"title":{"type":"string"},"task_type":{"type":"string"},"covers":{"type":"object"},"dependencies":{"type":"object"},"inputs":{"type":"object"},"outputs":{"type":"array"},"validation":{"type":"array"},"agent":{"type":"object"},"resources":{"type":"object"}}}},
+    "issues":{"type":"array"},
+    "execution":{"type":"object"},
+    "governance":{"type":"object"}
+  }
+}

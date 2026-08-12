@@ -1,0 +1,1 @@
+{"name":"red-team-plan","compose":["assumption-zero"],"preferences":{"adversarial_review":"high","challenge_critical_claims":"high"}}

@@ -1,0 +1,1 @@
+{"name":"context-isolation-high","constraints":{},"preferences":{"context_isolation":"high","minimize_duplicate_reads":"high"}}

@@ -1,0 +1,1 @@
+{"name":"large-repo","compose":["context-isolation-high"],"preferences":{"repository_mapping_first":"high","domain_agent_continuity":"high","avoid_full_repo_rescan":"high"}}

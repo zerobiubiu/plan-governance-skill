@@ -33,7 +33,7 @@ summary: 策略驱动的 Plan 编译、验证、调度、第三方审查、模�
 
 ## 核心模式
 
-支持：`generate`、`optimize`、`verify`、`audit`、`normalize`、`repair`、`simulate`。
+支持：`generate`、`optimize`、`verify`、`audit`、`approve`、`normalize`、`repair`、`simulate`。
 
 默认遵循：
 
@@ -234,6 +234,10 @@ Safety Invariants
 ### 用户只要求审核
 
 使用 `workflows/audit.md`，禁止越权实施。
+
+### 用户要求对 Plan 做审批放行
+
+使用 `workflows/approve.md`（先查验、后审批；审批人不得是 Plan Author，审批绑定 fingerprint）。
 
 ### 用户给 Audit 结果要求修复
 

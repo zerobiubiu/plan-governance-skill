@@ -199,6 +199,31 @@ def check_governance(plan: dict[str, Any]) -> list[dict[str, Any]]:
     return findings
 
 
+def check_approval(plan: dict[str, Any]) -> list[dict[str, Any]]:
+    """检查 Approval 绑定的确定性规则：作者分离、fingerprint 绑定、条件放行。"""
+    approval = plan.get("approval")
+    if not isinstance(approval, dict):
+        return []
+    findings: list[dict[str, Any]] = []
+    plan_meta = plan.get("plan", {})
+    author = plan_meta.get("author")
+    approver = approval.get("approver")
+    if author and approver and author == approver:
+        findings.append(finding("APV001", f"审批人 {approver} 与 Plan Author {author} 相同", affected=[approver, author]))
+    fp = approval.get("fingerprint")
+    plan_fp = plan_meta.get("fingerprint")
+    if not fp:
+        findings.append(finding("APV002", "Approval Record 未绑定 fingerprint"))
+    elif plan_fp and fp != plan_fp:
+        findings.append(finding("APV002", f"Approval fingerprint {fp} 与 Plan fingerprint {plan_fp} 失配", affected=[fp, plan_fp]))
+    unconditional = approval.get("verdict") in {"APPROVE", "APPROVED"}
+    for cond in approval.get("conditions") or []:
+        if isinstance(cond, dict) and cond.get("satisfied") is False and unconditional:
+            cid = str(cond.get("id", "<unknown>"))
+            findings.append(finding("APV003", f"条件 {cid} 未满足但审批被当作无条件批准", affected=[cid]))
+    return findings
+
+
 def lint(plan: dict[str, Any]) -> list[dict[str, Any]]:
     """运行当前实现的核心确定性规则。"""
     tasks, findings = task_map(plan)
@@ -211,6 +236,7 @@ def lint(plan: dict[str, Any]) -> list[dict[str, Any]]:
     findings += check_runtime(plan)
     findings += check_resource_conflicts(plan, tasks)
     findings += check_governance(plan)
+    findings += check_approval(plan)
     return findings
 
 

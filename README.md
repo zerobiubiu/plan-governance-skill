@@ -25,7 +25,7 @@
 
 ## 核心模式
 
-支持：`generate`、`optimize`、`verify`、`audit`、`normalize`、`repair`、`simulate`。
+支持：`generate`、`optimize`、`verify`、`audit`、`approve`、`normalize`、`repair`、`simulate`。
 
 ```text
 用户意图
@@ -80,8 +80,8 @@ EXECUTION_READY / BLOCKED / DIRECTION_REJECTED
 ├── schemas/                  # JSON Schema（Plan IR、Context Capsule、Finding 等）
 ├── context/                  # Context Capsule / Return Capsule 协议
 ├── authority/                # Authority Envelope
-├── workflows/                # generate / optimize / verify / audit / repair / simulate
-├── templates/                # plan / task / agent-task / audit-report / validator-prompt
+├── workflows/                # generate / optimize / verify / audit / approve / repair / simulate
+├── templates/                # plan / task / agent-task / audit-report / approval-record / validator-prompt
 ├── profiles/                 # 规划策略（atoms 原子策略 + presets 预设组合）
 ├── examples/                 # 示例 Plan
 ├── scripts/                  # 标准库实现的自检与治理脚本
@@ -113,6 +113,7 @@ uv run python scripts/simulate_plan.py examples/sample-plan.json
 - **用户给方案** → `workflows/generate.md`
 - **用户给已有 Plan 要调优** → `workflows/optimize.md`（先识别是 Semantic / Execution / Validation / Safety / Presentation 优化，避免 Full Replan）
 - **用户只要求审核** → `workflows/audit.md`（禁止越权实施）
+- **用户要求审批放行 Plan** → `workflows/approve.md`（先查验后审批，审批人不得是 Plan Author，审批绑定 fingerprint）
 - **用户给 Audit 结果要求修复** → `workflows/repair.md`（按 Issue / Revision Envelope 定向修复）
 
 ### 自定义规划策略

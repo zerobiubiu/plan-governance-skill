@@ -5,7 +5,7 @@
   "required":["schema_version","plan","requirements","tasks"],
   "properties":{
     "schema_version":{"type":"string"},
-    "plan":{"type":"object","required":["id","version","state"],"properties":{"id":{"type":"string"},"version":{"type":["integer","string"]},"state":{"type":"string"}}},
+    "plan":{"type":"object","required":["id","version","state"],"properties":{"id":{"type":"string"},"version":{"type":["integer","string"]},"state":{"type":"string"},"author":{"type":"string"},"fingerprint":{"type":"string"}}},
     "runtime":{"type":"object"},
     "policy":{"type":"object"},
     "requirements":{"type":"array","items":{"type":"object","required":["id","statement"],"properties":{"id":{"type":"string"},"statement":{"type":"string"},"priority":{"type":"string"}}}},
@@ -15,6 +15,7 @@
     "tasks":{"type":"array","items":{"type":"object","required":["id","title"],"properties":{"id":{"type":"string"},"title":{"type":"string"},"task_type":{"type":"string"},"covers":{"type":"object"},"dependencies":{"type":"object"},"inputs":{"type":"object"},"outputs":{"type":"array"},"validation":{"type":"array"},"agent":{"type":"object"},"resources":{"type":"object"}}}},
     "issues":{"type":"array"},
     "execution":{"type":"object"},
-    "governance":{"type":"object"}
+    "governance":{"type":"object"},
+    "approval":{"type":"object","properties":{"verdict":{"type":"string"},"approver":{"type":"string"},"fingerprint":{"type":"string"},"conditions":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string"},"satisfied":{"type":"boolean"},"acceptance":{"type":"string"},"due":{"type":"string"}}}},"valid_until":{"type":"string"}}}
   }
 }

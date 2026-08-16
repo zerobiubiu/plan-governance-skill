@@ -1,0 +1,26 @@
+{
+  "schema_version":"plan-engine/v1",
+  "plan":{"id":"PLAN-DEMO-APV","version":1,"state":"EXECUTION_READY","author":"alice","fingerprint":"fp-plan-001"},
+  "runtime":{"max_parallel_agents":3,"max_subagent_depth":2,"parallel_subagents":false},
+  "policy":{"hard":{"parallel_subagents":false}},
+  "requirements":[
+    {"id":"R001","statement":"后端托管前端构建产物","priority":"mandatory"}
+  ],
+  "facts":[
+    {"id":"F001","statement":"前端构建产物为 dist","status":"verified","evidence":["E001"]}
+  ],
+  "unknowns":[],
+  "tasks":[
+    {"id":"T01","title":"确认静态托管结构","task_type":"investigation","covers":{"requirements":["R001"]},"dependencies":{"hard":[]},"inputs":{},"outputs":[{"id":"O01","name":"static-map"}],"validation":["确认 build 与 serving 路径"],"agent":{"owner":"main"},"resources":{"write":[]}},
+    {"id":"T02","title":"调整后端静态托管","task_type":"implementation","covers":{"requirements":["R001"]},"dependencies":{"hard":["T01"]},"inputs":{"outputs":["O01"]},"outputs":[{"id":"O02","name":"backend-static-serving"}],"validation":["HTTP 集成验证"],"agent":{"owner":"backend-agent"},"resources":{"write":["backend/src/static.rs"]}}
+  ],
+  "execution":{"batches":[{"id":"B01","mode":"serial","tasks":["T01","T02"]}]},
+  "issues":[],
+  "governance":{"required_independent_validation":false},
+  "approval":{
+    "verdict":"APPROVE",
+    "approver":"bob",
+    "fingerprint":"fp-plan-001",
+    "conditions":[]
+  }
+}

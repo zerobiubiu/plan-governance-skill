@@ -50,6 +50,11 @@ def main() -> int:
     if lint.returncode != 0:
         failures.append(f"示例 Plan lint 失败:\n{lint.stdout}\n{lint.stderr}")
 
+    approval_sample = ROOT / "examples" / "sample-approval.json"
+    lint_apv = subprocess.run([sys.executable, str(ROOT / "scripts" / "plan_lint.py"), str(approval_sample)], capture_output=True, text=True)
+    if lint_apv.returncode != 0:
+        failures.append(f"示例 Approval Plan lint 失败:\n{lint_apv.stdout}\n{lint_apv.stderr}")
+
     gate = subprocess.run([sys.executable, str(ROOT / "scripts" / "governance_gate.py"), str(sample)], capture_output=True, text=True)
     if gate.returncode != 0:
         failures.append(f"示例 Plan governance gate 失败:\n{gate.stdout}\n{gate.stderr}")

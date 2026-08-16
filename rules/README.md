@@ -15,6 +15,7 @@
 - `SAFE`：安全/回滚；
 - `VAL`：验证/Proof；
 - `GOV`：治理状态；
+- `APV`：审批查验（Approval & Inspection）；
 - `DRF`：Drift/Staleness；
 - `SIM`：Simulation。
 
